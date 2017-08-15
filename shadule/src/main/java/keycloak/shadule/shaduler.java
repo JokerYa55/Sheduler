@@ -9,6 +9,7 @@ import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import keycloak.DAO.tUserLogDAO;
 
 /**
  *
@@ -18,9 +19,11 @@ import javax.persistence.Persistence;
 public class shaduler {
 
     public EntityManager em = Persistence.createEntityManagerFactory("keycloak_shadule_jar_1PU").createEntityManager();
-    @Schedule(minute="*/3", hour="*")
+    @Schedule(minute="*/2", hour="*")
     public void shTimer() {
-        System.out.println("Timer");
+        tUserLogDAO logDAO = new tUserLogDAO(em);
+        
+        System.out.println("Timer = " + logDAO.getList().size());
     }
 
 }

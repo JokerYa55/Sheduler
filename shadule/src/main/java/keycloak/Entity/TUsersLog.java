@@ -116,10 +116,7 @@ public class TUsersLog implements Serializable {
             return false;
         }
         TUsersLog other = (TUsersLog) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
