@@ -8,6 +8,12 @@
     </parent>
     <artifactId>shadule</artifactId>
     <packaging>jar</packaging>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <version.hibernate-jpa-api>1.0.0.Draft-16</version.hibernate-jpa-api>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
@@ -31,16 +37,18 @@
             <artifactId>jboss-logging</artifactId>
             <version>3.3.1.Final</version>
             <type>jar</type>
+        </dependency>      
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>${version.hibernate-jpa-api}</version>
         </dependency>
         <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-spi</artifactId>
-            <version>2.1.2.GA</version>
-            <type>jar</type>
-        </dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <scope>provided</scope>
+            <version>5.2.10.Final</version>
+        </dependency>  
     </dependencies>
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+    
 </project>

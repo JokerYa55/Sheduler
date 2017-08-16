@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -21,7 +20,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "t_users_log")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TUsersLog.findAll", query = "SELECT t FROM TUsersLog t")
     , @NamedQuery(name = "TUsersLog.findById", query = "SELECT t FROM TUsersLog t WHERE t.id = :id")
@@ -31,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TUsersLog.findByUsername", query = "SELECT t FROM TUsersLog t WHERE t.username = :username")})
 public class TUsersLog implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;    
     @Id
     @Basic(optional = false)
     @Column(name = "id")
@@ -116,12 +114,17 @@ public class TUsersLog implements Serializable {
             return false;
         }
         TUsersLog other = (TUsersLog) object;
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "keycloak.Entity.TUsersLog[ id=" + id + " ]";
+        return "TUsersLog{" + "id=" + id + ", flag=" + flag + ", password=" + password + ", userId=" + userId + ", username=" + username + '}';
     }
+
+   
     
 }
